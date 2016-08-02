@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-4">
         <p><img src="img/001.png" alt="Bulbasaur" style="width:75%;height:75%;"></p>
-        <p><button type="button" onclick="window.location.href='002.html'">#002--></button></p>   
+        <p><button type="button" onclick="plus()">--></button></p>   
         </div>
         <div class="col-md-6" >
             <h2><script>
@@ -64,7 +64,10 @@
             </tr>
             <tr>
                 <th>Type</th>
-                <td> <img onloadstart="type1();"> <img src="img/poison.gif" alt="Poison"></td> 
+                <td id="type1"> <script>
+                    type1();
+                    type2();
+                </script> </td> 
             </tr>
             <tr>
                 <th>Ability</th>
