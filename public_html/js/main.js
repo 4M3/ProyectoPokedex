@@ -28,8 +28,9 @@ var Wartortle = ["#008 Wartortle", "1.0 m", "22.5 Kg", "Its tail is large and co
 var Blastoise = ["#009 Blastoise", "1.6 m", "85.5 Kg", "Blastoise has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet.", types[14], types[15], "Torrent: When HP is below 1/3rd its maximum, power of Water-type moves is increased by 50%.", "Rain Dish: If Heavy Rain weather is in effect, recovers 1/16th max Hit Points at the end of the turn.", "Evolve Wartortle","S"];
 var mainarray = [ Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise ];
 
+console.log(mainarray.length);
 function plus(){
-    if (num<152){
+    if (num<(mainarray.length - 1)){
     num += 1 ;
     update = "on";
     console.log(update);
@@ -44,8 +45,36 @@ function plus(){
     hability();
     location();
     baseimg ();
+    basetext ();
     firstimg ();
+    firsttext ();
     secondimg ();
+    secondtext ();
+    update = "off";
+    console.log(update);
+}
+else{
+    console.log(num);
+    num = 0 ;
+    console.log(num);
+    update = "on";
+    console.log(update);
+    image();
+    name ();
+    height ();
+    weight ();
+    description();
+    type1();
+    type2();
+    ability();
+    hability();
+    location();
+    baseimg ();
+    basetext ();
+    firstimg ();
+    firsttext ();
+    secondimg ();
+    secondtext ();
     update = "off";
     console.log(update);
 }
@@ -68,8 +97,34 @@ function minus (){
     hability();
     location();
     baseimg ();
+    basetext ();
     firstimg ();
+    firsttext ();
     secondimg ();
+    secondtext ();
+    update = "off";
+    console.log(update);
+ }
+ else{
+     num = (mainarray.length - 1);
+     update = "on";
+    console.log(update);
+    image();
+    name ();
+    height ();
+    weight ();
+    description();
+    type1();
+    type2();
+    ability();
+    hability();
+    location();
+    baseimg ();
+    basetext ();
+    firstimg ();
+    firsttext ();
+    secondimg ();
+    secondtext ();
     update = "off";
     console.log(update);
  }
@@ -175,7 +230,6 @@ function type2 (){
       img.alt = mainarray[num][5][1];
       img.style.margin = "0 3px";
      document.getElementById("type").appendChild(img);
-     console.log(document.getElementById("type").childNodes);
     }
     else{
       var t = document.createTextNode(mainarray[num][5][0]);
@@ -188,7 +242,6 @@ function type2 (){
      var t = document.createTextNode(mainarray[num][5][0]);
     var img = document.getElementById("type");     
      img.replaceChild(t,img.childNodes[3]);
-     console.log(document.getElementById("type").childNodes);
     }
 
     else{
@@ -198,7 +251,6 @@ function type2 (){
       uimg.style.margin = "0 3px";
        img = document.getElementById("type");     
      img.replaceChild(uimg, img.childNodes[3]);  
-     console.log(document.getElementById("type").childNodes);
      
     }
   }
@@ -251,9 +303,7 @@ function baseimg (){
       img.style.width = "50%";
       img.style.height = "50%";
        var t = document.createTextNode(mainarray[num][0]);
-       console.log(t);
      document.getElementById("baseimg").appendChild(img);
-      document.getElementById("baseimg").appendChild(t);
         }
         else if (mainarray[num][9]==="F"){
           var img = document.createElement("img");
@@ -439,8 +489,190 @@ function secondimg (){
         }
     }
 }
+    
+    
+    function basetext (){
+    if (update === "off"){
+        if (mainarray[num][9]==="B"){ 
+         var x = document.getElementById("basetext"); 
+        var t = document.createTextNode(mainarray[num][0]);
+        x.appendChild(t);
+        var img = document.createElement("img");
+      img.src = mainarray[num][4][0];
+      img.alt = mainarray[num][4][1];
+      img.style.margin = "0 3px";
+     x.appendChild(img);
+     var img2 = document.createElement("img");
+      img2.src = mainarray[num][5][0];
+      img2.alt = mainarray[num][5][1];
+     x.appendChild(img2);
+        }
+        else if (mainarray[num][9]==="F"){
+           var x = document.getElementById("basetext"); 
+        var t = document.createTextNode(mainarray[(num-1)][0]);
+        x.appendChild(t);
+      var img = document.createElement("img");
+      img.src = mainarray[num-1][4][0];
+      img.alt = mainarray[num-1][4][1];
+      img.style.margin = "0 3px";
+     x.appendChild(img);
+      img.src = mainarray[num-1][5][0];
+      img.alt = mainarray[num-1][5][1];
+     x.appendChild(img);
+        }
+        else if (mainarray[num][9]==="S"){
+             var x = document.getElementById("basetext"); 
+        var t = document.createTextNode(mainarray[(num-2)][0]);
+        x.appendChild(t);
+       var img = document.createElement("img");
+      img.src = mainarray[num-2][4][0];
+      img.alt = mainarray[num-2][4][1];
+      img.style.margin = "0 3px";
+     x.appendChild(img);
+     img.src = mainarray[num-2][5][0];
+      img.alt = mainarray[num-2][5][1];
+     x.appendChild(img);
+        }
+    }
+    else{
+      if (mainarray[num][9]==="B"){
+           var x = document.getElementById("basetext"); 
+        var t = document.createTextNode(mainarray[num][0]);
+        console.log(t);
+        x.replaceChild(t, x.childNodes[1]);     
+        }
+      else if (mainarray[num][9]==="F"){
+           var x = document.getElementById("basetext"); 
+        var t = document.createTextNode(mainarray[(num-1)][0]);
+                console.log(t);
+        x.replaceChild(t, x.childNodes[1]);    
+        }
+      else if (mainarray[num][9]==="S"){
+            var x = document.getElementById("basetext"); 
+        var t = document.createTextNode(mainarray[num-2][0]);
+        x.replaceChild(t, x.childNodes[1]);     
+        }
+    }
+}
 
+function firsttext (){
+   if (update === "off"){
+        if (mainarray[num][9]==="B" && mainarray[(num + 1)][9]==="F"){
+        var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num+1][0]);
+        x.appendChild(t);     
+        }
+        else if (mainarray[num][9]==="F"){
+         var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num][0]);
+        x.appendChild(t);     
+        }
+        else if (mainarray[num][9]==="S"){
+        var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num-1][0]);
+        x.appendChild(t);     
+        }
+        else {
+        var x = document.getElementById("firsttext"); 
+     var t = document.createTextNode(" ");
+      x.appendChild(t); 
+        }
+    }
+    else{
+      if (mainarray[num][9]==="B" && mainarray[(num + 1)][9]==="F"){
+        var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num+1][0]);
+        x.replaceChild(t, x.childNodes[1]);     
+        }
+      else if (mainarray[num][9]==="F"){
+        var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num][0]);
+        x.replaceChild(t, x.childNodes[1]);  
+        }
+      else if (mainarray[num][9]==="S"){
+        var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num-1][0]);
+        x.replaceChild(t, x.childNodes[1]);  
+        }
+     else {
+        var x = document.getElementById("firsttext"); 
+     var t = document.createTextNode(" ");
+      x.replaceChild(t, x.childNodes[1]);
+        }
+    }
+    
+}
 
+function secondtext (){
+    if (update === "off"){
+        if (mainarray[num][9]==="B"&& mainarray[(num+1)][9]==="F" && mainarray[(num+2)][9]==="S"){
+          var x = document.getElementById("secondtext"); 
+        var t = document.createTextNode(mainarray[num+2][0]);
+        x.appendChild(t);   
+        }
+        else if (mainarray[num][9]==="F" && mainarray[(num+1)][9]==="S"){
+         var x = document.getElementById("secondtext"); 
+        var t = document.createTextNode(mainarray[num+1][0]);
+        x.appendChild(t);   
+        }
+        else if (mainarray[num][9]==="S"){
+         var x = document.getElementById("secondtext"); 
+        var t = document.createTextNode(mainarray[num][0]);
+        x.appendChild(t);   
+        }
+        else {
+        var x = document.getElementById("secondtext"); 
+     var t = document.createTextNode(" ");
+      x.appendChild(t); 
+        }
+    }
+    else{
+      if (mainarray[num][9]==="B"&& mainarray[(num+1)][9]==="F"&& mainarray[(num+2)][9]==="S"){
+        var x = document.getElementById("secondtext"); 
+        var t = document.createTextNode(mainarray[num+2][0]);
+        x.replaceChild(t, x.childNodes[1]);  
+        }
+      else if (mainarray[num][9]==="F"&& mainarray[(num+1)][9]==="S"){
+        var x = document.getElementById("secondtext"); 
+        var t = document.createTextNode(mainarray[num+1][0]);
+        x.replaceChild(t, x.childNodes[1]);  
+        }
+      else if (mainarray[num][9]==="S"){
+        var x = document.getElementById("secondtext"); 
+        var t = document.createTextNode(mainarray[num][0]);
+        x.replaceChild(t, x.childNodes[1]);  
+        }
+       else {
+        var x = document.getElementById("secondtext"); 
+     var t = document.createTextNode(" ");
+      x.replaceChild(t, x.childNodes[1]);
+        }
+    }
+    }
+    
+    function onclick(){
+       if (mainarray[num][9]==="B"){
+        var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num+1][0]);
+        x.appendChild(t);     
+        }
+        else if (mainarray[num][9]==="F"){
+         var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num][0]);
+        x.appendChild(t);     
+        }
+        else if (mainarray[num][9]==="S"){
+        var x = document.getElementById("firsttext"); 
+        var t = document.createTextNode(mainarray[num-1][0]);
+        x.appendChild(t);     
+        }
+        else {
+        var x = document.getElementById("firsttext"); 
+     var t = document.createTextNode(" ");
+      x.appendChild(t);   
+        
+    }
+    }
      /* console.log(document.getElementById("image").childNodes);*/
 
 /* 
